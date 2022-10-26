@@ -1,5 +1,6 @@
 let username = /^[a-zA-Z]+/
 let adress = /^([a-zA-Z]+(á[a-zA-Z]+)+).*[a-zA-Z]+,.*[0-9]+/
+let number = /^[0-9]+/
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -49,6 +50,15 @@ function checkCountry(input){
 function checkAdress(input){
     if(!(adress.test(input)) || input == null) {
         document.getElementById('adressa').innerHTML = "Nem jo"
+       }
+       else {
+        return console.log("ok")
+       }
+}
+
+function checkCode(input){
+    if(!(number.test(input)) || input == null) {
+        document.getElementById('codea').innerHTML = "Nem jo"
        }
        else {
         return console.log("ok")
