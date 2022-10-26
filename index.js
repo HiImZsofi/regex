@@ -2,6 +2,7 @@ let username = /^[a-zA-Z]+/
 let adress = /^([a-zA-Z]+(á[a-zA-Z]+)+).*[a-zA-Z]+,.*[0-9]+/
 let number = /^[0-9]+/
 let creditNumber = /^(?:5[1-5][0-9]{14})$/
+let cvc = /^[0-9]{3, }+/
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -12,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
         var adressInput = document.getElementById('adress').value;
         var codeInput = document.getElementById('code').value;
         var cardInput = document.getElementById('card').value;
+        var cvcInput = document.getElementById('cvc').value;
 
 
         checkUsername(usernameInput)
@@ -19,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         checkCity(cityInput)
         checkCode(codeInput)
         checkCard(cardInput)
+        checkCVC(cvcInput)
     })
 
     
@@ -79,3 +82,11 @@ function checkCode(input){
        }
 }
 
+function checkCVC(input){
+    if(!(cvc.test(input)) || input == null) {
+        document.getElementById('cvca').innerHTML = "Nem jo"
+       }
+       else {
+        return console.log("ok")
+       }
+}
