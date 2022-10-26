@@ -2,7 +2,8 @@ let username = /^[a-zA-Z]+/
 let adress = /^([a-zA-Z]+(á[a-zA-Z]+)+).*[a-zA-Z]+,.*[0-9]+/
 let number = /^[0-9]+/
 let creditNumber = /^(?:5[1-5][0-9]{14})$/
-let cvc = /^[0-9]{3, }+/
+let cvc = /^[0-9]{3}/
+let cardName = /^[a-z ,.'-]+$/i
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -14,7 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
         var codeInput = document.getElementById('code').value;
         var cardInput = document.getElementById('card').value;
         var cvcInput = document.getElementById('cvc').value;
+        var cardnameInput = document.getElementById('cardname').value;
 
+        
 
         checkUsername(usernameInput)
         checkCountry(countryInput)
@@ -22,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
         checkCode(codeInput)
         checkCard(cardInput)
         checkCVC(cvcInput)
+        checkCardname(cardnameInput)
     })
 
     
@@ -30,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function checkUsername(input){
    if(!(username.test(input)) || input == null) {
-    document.getElementById('tname').innerHTML = "Nem jo"
+    document.getElementById('tname').innerText = "Nem jo"
    }
    else {
     return console.log("ok")
@@ -39,7 +43,7 @@ function checkUsername(input){
 
 function checkCountry(input){
     if(!(username.test(input)) || input == null) {
-     document.getElementById('countrya').innerHTML = "Nem jo"
+     document.getElementById('countrya').innerText = "Nem jo"
     }
     else {
      return console.log("ok")
@@ -48,7 +52,7 @@ function checkCountry(input){
 
  function checkCity(input){
     if(!(username.test(input)) || input == null) {
-     document.getElementById('citya').innerHTML = "Nem jo"
+     document.getElementById('citya').innerText = "Nem jo"
     }
     else {
      return console.log("ok")
@@ -57,7 +61,7 @@ function checkCountry(input){
 
 function checkAdress(input){
     if(!(adress.test(input)) || input == null) {
-        document.getElementById('adressa').innerHTML = "Nem jo"
+        document.getElementById('adressa').innerText = "Nem jo"
        }
        else {
         return console.log("ok")
@@ -66,16 +70,16 @@ function checkAdress(input){
 
 function checkCode(input){
     if(!(number.test(input)) || input == null) {
-        document.getElementById('codea').innerHTML = "Nem jo"
+        document.getElementById('codea').innerText = "Nem jo"
        }
        else {
         return console.log("ok")
        }
 }
 
-function checkCode(input){
+function checkCard(input){
     if(!(creditNumber.test(input)) || input == null) {
-        document.getElementById('carda').innerHTML = "Nem jo"
+        document.getElementById('carda').innerText = "Nem jo"
        }
        else {
         return console.log("ok")
@@ -84,7 +88,16 @@ function checkCode(input){
 
 function checkCVC(input){
     if(!(cvc.test(input)) || input == null) {
-        document.getElementById('cvca').innerHTML = "Nem jo"
+        document.getElementById('cvca').innerText = "Nem jo"
+       }
+       else {
+        return console.log("ok")
+       }
+}
+
+function checkCardname(input){
+    if(!(cardName.test(input)) || input == null) {
+        document.getElementById('cardnamea').innerText = "Nem jo"
        }
        else {
         return console.log("ok")
