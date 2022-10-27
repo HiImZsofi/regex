@@ -1,9 +1,13 @@
 let username = /^[a-zA-Z]+/
 let adress = /^([a-zA-Z]+(á[a-zA-Z]+)+).*[a-zA-Z]+,.*[0-9]+/
 let number = /^[0-9]+/
-let creditNumber = /^(?:5[1-5][0-9]{14})$/
+let creditNumber = /^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14})$/
 let cvc = /^[0-9]{3}/
-let cardName = /^[a-z ,.'-]+$/i
+let cardName = /^[a-zA-Z]+/
+
+let correct = 0
+
+let message = "Sikeres fizetés!"
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -26,6 +30,10 @@ document.addEventListener('DOMContentLoaded', () => {
         checkCard(cardInput)
         checkCVC(cvcInput)
         checkCardname(cardnameInput)
+
+        checkIfCorrect()
+
+       
     })
 
     
@@ -38,6 +46,7 @@ function checkUsername(input){
     document.getElementById('tname').style.color = "red"
    }
    else {
+    correct++
     return console.log("ok")
    }
 }
@@ -48,6 +57,7 @@ function checkCountry(input){
      document.getElementById('countrya').style.color = "red"
     }
     else {
+     correct++
      return console.log("ok")
     }
  }
@@ -58,6 +68,7 @@ function checkCountry(input){
      document.getElementById('citya').style.color = "red"
     }
     else {
+        correct++
      return console.log("ok")
     }
  }
@@ -68,6 +79,7 @@ function checkAdress(input){
         document.getElementById('adressa').style.color = "red"
        }
        else {
+        correct++
         return console.log("ok")
        }
 }
@@ -78,6 +90,7 @@ function checkCode(input){
         document.getElementById('codea').style.color = "red"
        }
        else {
+        correct++
         return console.log("ok")
        }
 }
@@ -88,6 +101,7 @@ function checkCard(input){
         document.getElementById('carda').style.color = "red"
        }
        else {
+        correct++
         return console.log("ok")
        }
 }
@@ -98,6 +112,7 @@ function checkCVC(input){
         document.getElementById('cvca').style.color = "red"
        }
        else {
+        correct++
         return console.log("ok")
        }
 }
@@ -108,6 +123,16 @@ function checkCardname(input){
         document.getElementById('cardnamea').style.color = "red"
        }
        else {
+        correct++
         return console.log("ok")
        }
 }
+
+function checkIfCorrect(){
+    let message = "Sikeres fizetés"
+    if(correct == 7){
+        document.getElementById('sikeres').append(message)
+        document.getElementById('sikeres').style.color = "green"
+    }
+}
+
